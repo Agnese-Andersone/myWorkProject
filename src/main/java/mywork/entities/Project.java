@@ -19,7 +19,7 @@ public class Project {
     private String area;
 
     @OneToMany(mappedBy = "project")
-    private Set<Task> project = new HashSet<>();
+    private Set<Task> task = new HashSet<>();
 
     public Project() {
     }
@@ -53,13 +53,11 @@ public class Project {
         this.area = area;
     }
 
-    public Set<Task> getProject() {
-        return project;
+    public Set<Task> getTask() {
+        return task;
     }
 
-    public void setProject(Set<Task> project) {
-        this.project = project;
+    public void setTask(Set<Task> task) {
+        this.task = task;
     }
-
-
 }

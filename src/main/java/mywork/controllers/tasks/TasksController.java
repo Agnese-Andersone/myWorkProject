@@ -39,7 +39,11 @@ public class TasksController implements Initializable {
         controller.setEditable(task);
         controller.addPostOperationCallback(this::populateTable);
     }
-
+    @FXML
+    private void deleteBook(ActionEvent event) {
+        Task task = table.getSelectionModel().getSelectedItem();
+        taskRepository.delete(task);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureTable();
@@ -50,19 +54,23 @@ public class TasksController implements Initializable {
         TableColumn<Task, Long> column1 = new TableColumn<>("proj_id");
         column1.setCellValueFactory(new PropertyValueFactory<>("proj_id"));
 
-        TableColumn<Task, String> column2 = new TableColumn<>("task_name");
-        column2.setCellValueFactory(new PropertyValueFactory<>("task_name"));
+        TableColumn<Task, String> column2 = new TableColumn<>("proj_title");
+        column2.setCellValueFactory(new PropertyValueFactory<>("proj_title"));
 
-        TableColumn<Task, String> column3 = new TableColumn<>("task_description");
-        column3.setCellValueFactory(new PropertyValueFactory<>("task_description"));
+        TableColumn<Task, String> column3 = new TableColumn<>("task_name");
+        column3.setCellValueFactory(new PropertyValueFactory<>("task_name"));
 
-        TableColumn<Task, String> column4 = new TableColumn<>("proj_title");
-        column4.setCellValueFactory(new PropertyValueFactory<>("proj_title"));
+        TableColumn<Task, String> column4 = new TableColumn<>("task_description");
+        column4.setCellValueFactory(new PropertyValueFactory<>("task_description"));
+
+        TableColumn<Task, String> column5 = new TableColumn<>("status_title");
+        column5.setCellValueFactory(new PropertyValueFactory<>("status_title"));
 
         table.getColumns().add(column1);
         table.getColumns().add(column2);
         table.getColumns().add(column3);
         table.getColumns().add(column4);
+        table.getColumns().add(column5);
     }
 
     private void populateTable() {

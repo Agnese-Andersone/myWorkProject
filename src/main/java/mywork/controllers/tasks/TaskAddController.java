@@ -57,8 +57,8 @@ public class TaskAddController implements Initializable {
             return;
         }
 
-        Long proj_Id = Long.parseLong(taskProjectId);
-        Project project = projectRepository.findOne(proj_Id);
+        Long proj_id = Long.parseLong(taskProjectId);
+        Project project = projectRepository.findOne(proj_id);
         if (project == null) {
             System.out.println("Project with such id doesn't exist!");
             //TODO: author with such ID doesn't exist, display error to user!
