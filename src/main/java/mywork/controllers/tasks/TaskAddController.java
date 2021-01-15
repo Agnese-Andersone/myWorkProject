@@ -52,7 +52,7 @@ public class TaskAddController implements Initializable {
         String taskProjectId = proj_id.getText();
 
         if (taskTitle.isEmpty() || taskDescription.isEmpty() || taskProjectId.isEmpty()) {
-            System.out.println("Please, fill all fields!");
+            System.out.println("Please, fill in all fields!");
             //TODO: show user alert that all fields have to be filled
             return;
         }
