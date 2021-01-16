@@ -19,9 +19,12 @@ public class TaskAddController implements Initializable {
     private final ProjectRepository projectRepository = new ProjectRepository();
     private final TaskRepository taskRepository = new TaskRepository();
 
+    @FXML private TextField proj_id;
+    @FXML private TextField proj_title;
     @FXML private TextField task_name;
     @FXML private TextField task_description;
-    @FXML private TextField proj_id;
+
+
 
     @FXML private StackPane rootPane;
 
@@ -43,17 +46,18 @@ public class TaskAddController implements Initializable {
         this.task_name.setText(task.getTask_name());
         this.task_description.setText(task.getTask_description());
         this.proj_id.setText(task.getProject().getProj_id().toString());
+        this.proj_title.setText(task.getProject().getProj_title().toString());
     }
 
     @FXML
-    private void addBook(ActionEvent event) {
+    private void addTask(ActionEvent event) {
         String taskTitle = task_name.getText();
         String taskDescription = task_description.getText();
         String taskProjectId = proj_id.getText();
 
+
         if (taskTitle.isEmpty() || taskDescription.isEmpty() || taskProjectId.isEmpty()) {
             System.out.println("Please, fill in all fields!");
-            //TODO: show user alert that all fields have to be filled
             return;
         }
 
@@ -61,7 +65,6 @@ public class TaskAddController implements Initializable {
         Project project = projectRepository.findOne(proj_id);
         if (project == null) {
             System.out.println("Project with such id doesn't exist!");
-            //TODO: author with such ID doesn't exist, display error to user!
             return;
         }
 

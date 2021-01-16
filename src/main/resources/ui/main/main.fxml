@@ -11,7 +11,7 @@
          <left>
             <AnchorPane fx:id="navigation" prefHeight="400.0" prefWidth="195.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="books" fx:id="booksButton" layoutX="5.0" layoutY="68.0" onAction="#switchPanel" prefHeight="88.0" prefWidth="183.0" text="My projects" />
+                  <Button id="tasks" fx:id="tasksButton" layoutX="5.0" layoutY="68.0" onAction="#switchPanel" prefHeight="88.0" prefWidth="183.0" text="My projects" />
                </children>
             </AnchorPane>
          </left>

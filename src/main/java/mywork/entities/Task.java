@@ -61,4 +61,10 @@ public class Task {
     public void setProject(Project project) {
         this.project = project;
     }
+    public Long getProjId(){
+        return getProject().getProj_id();
+    }
+    public String getProjTitle(){
+        return getProject().getProj_title();
+    }
 }

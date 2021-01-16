@@ -22,14 +22,14 @@ public class TasksController implements Initializable {
     @FXML private TableView<Task> table;
 
     @FXML
-    private void addBook(ActionEvent event) {
+    private void addTask(ActionEvent event) {
         TaskAddController controller = (TaskAddController) ViewLoader
                 .load(getClass().getResource("/ui/task/add_task.fxml"), "Add task");
         controller.addPostOperationCallback(this::populateTable);
     }
 
     @FXML
-    private void editBook(ActionEvent event) {
+    private void editTask(ActionEvent event) {
         Task task = table.getSelectionModel().getSelectedItem();
         if (task == null) {
             return;
@@ -40,9 +40,15 @@ public class TasksController implements Initializable {
         controller.addPostOperationCallback(this::populateTable);
     }
     @FXML
-    private void deleteBook(ActionEvent event) {
+    private void deleteTask(ActionEvent event) {
         Task task = table.getSelectionModel().getSelectedItem();
+        if (task == null) {
+            return;
+        }
         taskRepository.delete(task);
+        populateTable();
+
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,10 +58,10 @@ public class TasksController implements Initializable {
 
     private void configureTable() {
         TableColumn<Task, Long> column1 = new TableColumn<>("proj_id");
-        column1.setCellValueFactory(new PropertyValueFactory<>("proj_id"));
+        column1.setCellValueFactory(new PropertyValueFactory<>("projId"));
 
         TableColumn<Task, String> column2 = new TableColumn<>("proj_title");
-        column2.setCellValueFactory(new PropertyValueFactory<>("proj_title"));
+        column2.setCellValueFactory(new PropertyValueFactory<>("projTitle"));
 
         TableColumn<Task, String> column3 = new TableColumn<>("task_name");
         column3.setCellValueFactory(new PropertyValueFactory<>("task_name"));
@@ -63,14 +69,12 @@ public class TasksController implements Initializable {
         TableColumn<Task, String> column4 = new TableColumn<>("task_description");
         column4.setCellValueFactory(new PropertyValueFactory<>("task_description"));
 
-        TableColumn<Task, String> column5 = new TableColumn<>("status_title");
-        column5.setCellValueFactory(new PropertyValueFactory<>("status_title"));
 
         table.getColumns().add(column1);
         table.getColumns().add(column2);
         table.getColumns().add(column3);
         table.getColumns().add(column4);
-        table.getColumns().add(column5);
+
     }
 
     private void populateTable() {
