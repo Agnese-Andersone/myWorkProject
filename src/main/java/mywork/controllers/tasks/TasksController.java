@@ -57,16 +57,16 @@ public class TasksController implements Initializable {
     }
 
     private void configureTable() {
-        TableColumn<Task, Long> column1 = new TableColumn<>("proj_id");
+        TableColumn<Task, Long> column1 = new TableColumn<>("Project ID");
         column1.setCellValueFactory(new PropertyValueFactory<>("projId"));
 
-        TableColumn<Task, String> column2 = new TableColumn<>("proj_title");
+        TableColumn<Task, String> column2 = new TableColumn<>("Project Title");
         column2.setCellValueFactory(new PropertyValueFactory<>("projTitle"));
 
-        TableColumn<Task, String> column3 = new TableColumn<>("task_name");
+        TableColumn<Task, String> column3 = new TableColumn<>("Task name");
         column3.setCellValueFactory(new PropertyValueFactory<>("task_name"));
 
-        TableColumn<Task, String> column4 = new TableColumn<>("task_description");
+        TableColumn<Task, String> column4 = new TableColumn<>("Task description");
         column4.setCellValueFactory(new PropertyValueFactory<>("task_description"));
 
 
